@@ -6,17 +6,18 @@ import webbrowser
 import os
 import smtplib
 
+MASTER = "Sir"
 
 def wishMe():
     hour = int(datetime.datetime.now().hour)
     if hour >= 0 and hour < 12:
-        speak("Good Morning!")
+        speak("Good Morning!" + MASTER)
 
     elif hour >= 12 and hour < 18:
-        speak("Good Afternoon!")
+        speak("Good Afternoon!" + MASTER)
 
     else:
-        speak("Good Evening!")
+        speak("Good Evening!" + MASTER)
 
     print("I am Jarvis Sir. Please tell me how may I help you")
     speak("I am Jarvis Sir. Please tell me how may I help you")
@@ -164,7 +165,13 @@ if __name__ == "__main__":
 
         elif 'the time' in query:
             strTime = datetime.datetime.now().strftime("%H:%M:%S")
-            speak(f"Sir the time is {strTime}")
+            speak(f"Sir the time is {strTime}")elif 'hello' in query:
+            speak("Hello sir. How are you?")
+            print("Hello sir. How are you?")
+        
+        elif 'hello' in query:
+            speak("Hello sir. How are you?")
+            print("Hello sir. How are you?")
 
         elif 'open code' in query:
             print("Opening Code")
