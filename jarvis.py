@@ -5,6 +5,7 @@ import wikipedia
 import webbrowser
 import os
 import smtplib
+import requests
 
 
 def wishMe():
@@ -213,5 +214,21 @@ if __name__ == "__main__":
             devide()
         elif 'minus' in query:
             minus()
+        elif 'my' in query and ('location' in query):
+            try:
+                response = requests.get('https://ipinfo.io/')
+                locInfo = response.json()
+                # print(data)
+                print(30*"-")
+                print(locInfo['city'])
+                print(locInfo['region'])
+                if locInfo['country'] == 'IN':
+                   locInfo['country'] = 'India'
+                print(locInfo['country'])
+                print(locInfo['postal'])
+                speak(f"Sir, you are currently in {locInfo['city']} in {locInfo['region']}. Postal code is {locInfo['postal']}")
+                print(30*"-")
+            except Exception as e:
+                print("Sorry, sir. I am having issues gathering your location")
         elif 'sleep' in query:
             break
